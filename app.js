@@ -6,9 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-const MongoClient    = require('mongodb').MongoClient;
-const db             = require('./db');
-const app            = express();
+const app = express();
 const port = 8000;
 
 app.all('/', function(req, res, next) {
@@ -25,11 +23,6 @@ app.listen(port, (err) => {
         return console.log('something bad happened', err);
     }
     console.log(`server is listening on ${port}`);
-});
-MongoClient.connect(db.url, function(err, db){
-    if(err){
-        return console.log(err);
-    }
 });
 // view engine setup
 app.set('view engine', 'jade');
